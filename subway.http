@@ -1,0 +1,66 @@
+### OAUTH token get
+POST {{oauth-base-uri}}/{{tenant-id}}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id={{client-id}}&client_secret={{client-secret}}&grant_type=client_credentials&scope=API://FreshAPI/.default
+
+> {% client.global.set("auth-token", response.body.access_token); %}
+
+<> 2020-02-27T035920.200.json
+<> 2020-02-27T035856.200.json
+<> 2020-02-27T035733.200.json
+<> 2020-02-27T035133.200.json
+<> 2020-02-27T035058.400.json
+<> 2020-02-27T034932.400.json
+
+### Get Location
+GET {{base-uri}}/fresh-location/v1/locations/3708-0
+Authorization: Bearer {{auth-token}}
+
+<> 2020-02-27T035929.200.json
+<> 2020-02-27T035857.401.json
+<> 2020-02-27T035740.401.json
+
+### Get Global Catalog
+GET {{base-uri}}/fresh-menu/v1/catalog/US
+Authorization: Bearer {{auth-token}}
+
+### Get Store Menu
+GET {{base-uri}}/fresh-menu/v1/menu/3708-0
+Authorization: Bearer {{auth-token}}
+
+### Order Validate
+POST {{base-uri}}/fresh-order/v1/order/validate
+Authorization: Bearer {{auth-token}}
+Content-Type: application/json
+
+{
+  "locationId": "3708-0",
+  "orderSourceType": "third_party_marketplace",
+  "channelInboundProviderId": "grubhub",
+  "channelOutboundDeliveryProviderId": "grubhub",
+  "orderType": "individual",
+  "externalRefId": "55276910-2501-0138-de3b-0cdd24685939",
+  "deliveryDetails": {
+    "deliveryMethod": "pickup"
+  },
+  "items": [
+    {
+      "description": "Ham & Cheese Footlong Sub",
+      "itemId": "1",
+      "quantity": 1,
+      "price": 5,
+      "modifiers": [
+        {
+          "description": "US Italian, 6\"",
+          "itemId": "D-1",
+          "price": 0
+        }
+      ]
+    }
+  ]
+}
+
+###
+
+
