@@ -1,0 +1,46 @@
+POST http://localhost:5000/v15/access_tokens
+Content-Type: application/json
+Accept: application/json
+
+{
+  "access_token": {
+    "api_key": "63c0a9235fb613d4ff7f3f151e917f755d306c2a27a84b4f0191ddbab31f1713",
+    "username": "admin@example.com",
+    "password": "password"
+  }
+}
+
+###
+GET http://localhost:5001/v15/order_ahead/location/594150/ready_times
+Authorization: token 2-SGijheTNtSG5ELB8CDJoAtBtoyTC9TePN5x9YCW546vJNVyEmEGBNY2ozyxQJX
+Accept: application/json
+
+###
+
+AccessToken:
+
+{
+  "order": {
+    "conveyance_attributes": {
+      "fulfillment_type": "pickup"
+    },
+    "cart_items_attributes": [
+      {
+        "menu_item_id": 1951,
+        "cart_item_options_attributes": [
+          {
+            "menu_item_option_id": 4336
+          }
+        ],
+        "quantity": 1,
+        "special_instructions": ""
+      }
+    ],
+    "location_id": 594150,
+    "special_instructions": "",
+    "tip_amount": "0"
+  }
+}
+
+
+###

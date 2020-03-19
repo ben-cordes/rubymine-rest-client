@@ -6,20 +6,13 @@ client_id={{client-id}}&client_secret={{client-secret}}&grant_type=client_creden
 
 > {% client.global.set("auth-token", response.body.access_token); %}
 
-<> 2020-02-27T035920.200.json
-<> 2020-02-27T035856.200.json
-<> 2020-02-27T035733.200.json
-<> 2020-02-27T035133.200.json
-<> 2020-02-27T035058.400.json
-<> 2020-02-27T034932.400.json
-
 ### Get Location
 GET {{base-uri}}/fresh-location/v1/locations/3708-0
 Authorization: Bearer {{auth-token}}
 
-<> 2020-02-27T035929.200.json
-<> 2020-02-27T035857.401.json
-<> 2020-02-27T035740.401.json
+### Get Location POS Status
+GET {{base-uri}}/fresh-location/v1/locations/3708-0/status
+Authorization: Bearer {{auth-token}}
 
 ### Get Global Catalog
 GET {{base-uri}}/fresh-menu/v1/catalog/US
@@ -61,6 +54,13 @@ Content-Type: application/json
   ]
 }
 
+### Order Cancel
+POST {{base-uri}}/fresh-order/v1/order/17/cancel
+Authorization: Bearer {{auth-token}}
+
+{
+  "cancelReason": ""
+}
 ###
 
 
