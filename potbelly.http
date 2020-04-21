@@ -1,0 +1,6 @@
+###
+GET https://api-staging.ncrcloud.com/aoopreprod/v1/Times/507/Pickup/Web/1029?daysFromToday=0&numberOfDays=1
+Authorization: Basic {{basic-auth}}
+Accept: application/json
+Content-Type: application/json
+X-Api-CompanyCode: ZIPS001
