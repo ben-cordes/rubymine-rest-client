@@ -18,8 +18,12 @@ Authorization: Bearer {{auth-token}}
 GET {{base-uri}}/fresh-menu/v1/catalog/US
 Authorization: Bearer {{auth-token}}
 
-### Get Store Menu
+### Get Store Menu (UAT)
 GET {{base-uri}}/fresh-menu/v1/menu/3708-0
+Authorization: Bearer {{auth-token}}
+
+### Get Store Menu (Prod)
+GET {{base-uri}}/fresh-menu/v1/menu/49364-0
 Authorization: Bearer {{auth-token}}
 
 ### Order Validate
