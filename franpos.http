@@ -1,0 +1,25 @@
+### Search for stores
+POST {{base-uri}}/api/v2/store/search
+X-Api-Key: {{api-key}}
+
+{
+  "latitude": 40,
+  "longitude": -96,
+  "distance": 100
+ }
+
+### Get store data (why is this a POST???)
+POST {{base-uri}}/api/v2/store/100571
+X-Api-Key: {{api-key}}
+
+### Get store's menu
+GET {{base-uri}}/api/v2/store/100571/menu
+X-Api-Key: {{api-key}}
+
+### Get page two of the menu
+GET {{base-uri}}/api/v2/store/100571/menu?offset=0
+X-Api-Key: {{api-key}}
+
+### Get data for a menu item
+GET {{base-uri}}/api/v2/store/100571/menu/284/item/5673425
+X-Api-Key: {{api-key}}
