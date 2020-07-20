@@ -17,9 +17,56 @@ GET {{base-uri}}/api/v2/store/100571/menu
 X-Api-Key: {{api-key}}
 
 ### Get page two of the menu
-GET {{base-uri}}/api/v2/store/100571/menu?offset=0
+GET {{base-uri}}/api/v2/store/100571/menu?offset=12
 X-Api-Key: {{api-key}}
 
 ### Get data for a menu item
 GET {{base-uri}}/api/v2/store/100571/menu/284/item/5673425
 X-Api-Key: {{api-key}}
+
+### Order Validation
+POST {{base-uri}}/api/v2/order/calculate/totals
+X-Api-Key: {{api-key}}
+
+{
+  "companyId":100571,
+  "items":[
+    { "id":5673324, "menuId":4979, "qty":3, "modifiers":[] }
+  ],
+  "notes":null,
+  "orderTypeId":1278,
+  "pickupDeliveryDateTime":null,
+  "prepareAsap":true
+}
+
+### Order Submission
+POST {{base-uri}}/api/v2/order/complete
+X-Api-Key: {{api-key}}
+
+{
+  "companyId":100571,
+  "items":[
+    { "id":5673324, "menuId":4979, "qty":3, "modifiers":[] }
+  ],
+  "notes":null,
+  "orderTypeId":1278,
+  "pickupDeliveryDateTime":null,
+  "prepareAsap":true,
+  "discount": {
+    "code": ""
+  },
+  "deliveryInfo": {
+    "firstName":"ariburgersb",
+    "lastName":"ariburgersc",
+    "email":"admin@example.com",
+    "phone":"7726464459"
+  },
+  "paymentInfo": { "paymentMethod":"PayAtStore" },
+  "totals": {
+    "discountTotal":0.0,
+    "orderTypeFee":10.0,
+    "taxTotal":0.0,
+    "tipsTotal":0.0,
+    "total":21.58
+  }
+}
