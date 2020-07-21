@@ -1,0 +1,41 @@
+### Submit order for validation
+POST http://localhost:5001/v15/order_ahead/orders
+Accept: application/json
+Content-Type: application/json
+Authorization: token {{mothership-token}}
+
+{
+  "order": {
+    "location_id": 641852,
+    "conveyance": { "fulfillment_type": "pickup" },
+    "items": [
+      {
+        "item": {
+          "id": 4369,
+          "quantity": 3
+        }
+      }
+    ],
+    "tip_amount": 0
+  }
+}
+
+> {% client.global.set("order_uuid", response.body.order.uuid) %}
+
+### Check status of validation
+GET http://localhost:5001/v15/order_ahead/orders/{{order_uuid}}
+Accept: application/json
+Content-Type: application/json
+Authorization: token {{mothership-token}}
+
+### Complete order
+POST http://localhost:5001/v15/order_ahead/orders/{{order_uuid}}/complete
+Accept: application/json
+Content-Type: application/json
+Authorization: token {{mothership-token}}
+
+### Check status of submission
+GET http://localhost:5001/v15/order_ahead/orders/{{order_uuid}}/complete
+Accept: application/json
+Content-Type: application/json
+Authorization: token {{mothership-token}}
